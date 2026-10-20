@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #05060a;
+  --color-panel: #0b0d14;
+  --color-line: #1c2030;
+  --color-dim: #6b7290;
+  --color-text: #d6dbf0;
+  --color-neon: #7cffb2;
+  --color-violet: #a78bfa;
+  --color-blood: #ff5c7a;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-sans: var(--font-space), ui-sans-serif, system-ui;
+}
+
+:root {
+  /* Top bar height, plus the notch area on phones that have one */
+  --bar: calc(2rem + env(safe-area-inset-top, 0px));
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--color-void);
+  color: var(--color-text);
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+::selection {
+  background: var(--color-neon);
+  color: var(--color-void);
+}
+
+.scroll-thin::-webkit-scrollbar { width: 6px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: var(--color-line); border-radius: 3px; }
+
+.scanlines::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 3px);
+  z-index: 9999;
+}
+
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+}
+/* The colored copies stay hidden and only flash for a few frames, so the name keeps its faint look */
+.glitch::before {
+  color: var(--color-blood);
+  clip-path: inset(0 0 60% 0);
+  opacity: 0;
+  animation: g1 2.4s infinite steps(1);
+}
+.glitch::after {
+  color: var(--color-violet);
+  clip-path: inset(55% 0 0 0);
+  opacity: 0;
+  animation: g2 3.1s infinite steps(1);
+}
+@keyframes g1 { 0%,92%{opacity:0;transform:translate(0)} 93%{opacity:.18;transform:translate(-4px,1px)} 96%{opacity:.12;transform:translate(3px,-1px)} 98%{opacity:0} }
+@keyframes g2 { 0%,88%{opacity:0;transform:translate(0)} 89%{opacity:.16;transform:translate(4px,0)} 94%{opacity:.1;transform:translate(-3px,1px)} 96%{opacity:0} }
+
+.caret::after {
+  content: "▋";
+  animation: blink 1s steps(1) infinite;
+  color: var(--color-neon);
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch::before, .glitch::after, .caret::after { animation: none; }
+}
