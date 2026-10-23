@@ -11,7 +11,7 @@ const files: Record<string, AppId> = {
   "experience.log": "experience", "deneyim.log": "experience",
   "skills": "skills", "yetenekler": "skills",
   "contact.sh": "contact", "iletisim.sh": "contact",
-  "lab": "lab", "snake.exe": "snake",
+  "snake.exe": "snake",
   "projects": "projects", "projeler": "projects",
   "task-manager": "taskmanager", "task-manager.app": "taskmanager",
   "kanban": "kanban", "kanban-demo": "kanban",
@@ -36,7 +36,8 @@ function run(raw: string, lang: Lang, ctx: { open: (id: AppId) => void; setLang:
         out("  ls            " + (tr ? "dosyaları listele" : "list files")),
         out("  cat <dosya>   " + (tr ? "dosyayı oku" : "read a file")),
         out("  open <dosya>  " + (tr ? "pencerede aç" : "open in a window")),
-        out("  projects      " + (tr ? "projelerim" : "my projects")),        out("  skills · experience · education · contact"),
+        out("  projects      " + (tr ? "projelerim" : "my projects")),
+        out("  skills · experience · education · contact"),
         out("  neofetch      " + (tr ? "sistem bilgisi" : "system info")),
         out("  lang tr|en    " + (tr ? "dili değiştir" : "switch language")),
         out("  clear · history · date · echo"),
@@ -46,7 +47,7 @@ function run(raw: string, lang: Lang, ctx: { open: (id: AppId) => void; setLang:
       return [out(`${profile.name} — ${profile.title[lang]}`), out(profile.about[lang][1])];
     case "ls":
       if (/^(projects|projeler)\/?$/.test(arg)) return projects.map((p) => out(p.app ? "task-manager.app" : p.id + "/"));
-      return [out(tr ? "hakkimda.md  deneyim.log  projeler/  yetenekler/  iletisim.sh  lab/  snake.exe" : "about.md  experience.log  projects/  skills/  contact.sh  lab/  snake.exe")];
+      return [out(tr ? "hakkimda.md  deneyim.log  projeler/  yetenekler/  iletisim.sh  snake.exe" : "about.md  experience.log  projects/  skills/  contact.sh  snake.exe")];
     case "cat": {
       const f = arg.replace(/\/$/, "");
       if (!f) return [err("cat: " + (tr ? "dosya adı gerekli" : "missing file name"))];

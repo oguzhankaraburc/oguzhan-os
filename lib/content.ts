@@ -145,12 +145,4 @@ export const ui = {
     tr: "oguzhan.os'a hoş geldin. Komutlar için 'help' yaz.",
     en: "Welcome to oguzhan.os. Type 'help' for commands.",
   },
-  lab_intro: {
-    tr: "Deneysel küçük uygulamalar. Zamanla büyüyecek.",
-    en: "Small experimental apps. This folder grows over time.",
-  },
-  this_site: {
-    tr: "Bu site: Next.js, TypeScript, Tailwind, Zustand, Motion ve WebGL ile yazılmış bir web işletim sistemi.",
-    en: "This site: a web OS built with Next.js, TypeScript, Tailwind, Zustand, Motion and WebGL.",
-  },
 } satisfies Record<string, T>;

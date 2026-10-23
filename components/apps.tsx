@@ -4,7 +4,6 @@ import About from "./apps/About";
 import Experience from "./apps/Experience";
 import Skills from "./apps/Skills";
 import Terminal from "./apps/Terminal";
-import Lab from "./apps/Lab";
 import Snake from "./apps/Snake";
 import Contact from "./apps/Contact";
 import Projects from "./apps/Projects";
@@ -51,10 +50,6 @@ export const apps: Record<AppId, AppDef> = {
   terminal: {
     file: { tr: "terminal", en: "terminal" }, color: "text-neon", Component: Terminal, desktop: true,
     glyph: <Icon><path d="M5 7l5 5-5 5M12 18h7" /></Icon>,
-  },
-  lab: {
-    file: { tr: "lab/", en: "lab/" }, color: "text-yellow-300", Component: Lab, desktop: true,
-    glyph: <Icon><path d="M9 3h6M10 3v6l-5.5 9.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3M7.5 15h9" /></Icon>,
   },
   contact: {
     file: { tr: "iletisim.sh", en: "contact.sh" }, color: "text-blood", Component: Contact, desktop: true,

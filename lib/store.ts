@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import type { Lang } from "./content";
 
-export type AppId = "about" | "experience" | "skills" | "terminal" | "lab" | "snake" | "contact" | "projects" | "taskmanager" | "kanban";
+export type AppId = "about" | "experience" | "skills" | "terminal" | "snake" | "contact" | "projects" | "taskmanager" | "kanban";
 
 export type Win = {
   id: AppId;
@@ -35,7 +35,6 @@ const defaults: Record<AppId, { w: number; h: number }> = {
   experience: { w: 620, h: 480 },
   skills: { w: 540, h: 440 },
   terminal: { w: 640, h: 400 },
-  lab: { w: 480, h: 340 },
   snake: { w: 420, h: 480 },
   contact: { w: 460, h: 340 },
   projects: { w: 560, h: 420 },
